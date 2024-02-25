@@ -18,8 +18,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define MAX_TABLE_SIZE 100
-#define QSIZE 16384
+#define MAX_TABLE_SIZE 50
+#define QSIZE 4096
 
 // types of cells
 #define EMPTY '-'
@@ -65,8 +65,11 @@ int main() {
   int running, table_size, key, dir, score;
   Coordinate temp;
 
-  printf("Enter table size: ");
-  scanf("%d", &table_size);
+  table_size = MAX_TABLE_SIZE + 1;
+  while(table_size > MAX_TABLE_SIZE || table_size < 1) {
+    printf("Enter table size: ");
+    scanf("%d", &table_size);
+  }
 
   initTable(table_size); // initialize the table
   
